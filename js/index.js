@@ -4,7 +4,30 @@ document.addEventListener('DOMContentLoaded', () => {
     load50(currentPage);
     createForm();
     formEventListender();
+    pageEventListener()
 });
+
+function pageEventListener() {
+    let nextPage = document.querySelector("#forward");
+    let prevPage = document.querySelector("#back");
+    nextPage.addEventListener('click', () => {
+        if (currentPage < 20) {
+            currentPage++
+            load50(currentPage)
+        } else {
+            alert("You are on the last page already!")
+        }
+    });
+    prevPage.addEventListener('click', () =>{
+        if (currentPage > 1) {
+            currentPage--
+            load50(currentPage)
+        } else {
+            alert("You are on the first page already!")
+        }
+    })
+    
+}
 
 function load50(page) {
     document.querySelector("#monster-container").innerHTML = "";
